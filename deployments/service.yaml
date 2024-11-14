@@ -1,0 +1,19 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: llm-chat-app
+  labels:
+    app: llm-chat-app
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8501
+      targetPort: 8501
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: llm-chat-app
+
